@@ -40,24 +40,62 @@ export default function Navbar({ onNavigate }) {
   }, []);
 
   useEffect(() => {
-    const sectionIds = ["about", "experience", "projects", "skills", "certifications", "contact"];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && sectionIds.includes(entry.target.id)) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
-    );
+    const sectionIds = navLinks.map((item) => item.id);
+    let rafId = 0;
+    let pollId = 0;
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+    const updateActiveSection = () => {
+      const headerOffset = 120;
+      let nextActive = sectionIds[0];
+
+      sectionIds.forEach((id) => {
+        const section = document.getElementById(id);
+        if (!section) return;
+
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= headerOffset) {
+          nextActive = id;
+        }
+      });
+
+      setActiveSection((current) => (current === nextActive ? current : nextActive));
+    };
+
+    const handlePositionChange = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateActiveSection);
+    };
+
+    const pollUntilSectionsMount = () => {
+      updateActiveSection();
+      const allSectionsMounted = sectionIds.every((id) => Boolean(document.getElementById(id)));
+      if (!allSectionsMounted) {
+        pollId = window.setTimeout(pollUntilSectionsMount, 250);
+      }
+    };
+
+    pollUntilSectionsMount();
+    window.addEventListener("scroll", handlePositionChange, { passive: true });
+    window.addEventListener("resize", handlePositionChange);
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      if (pollId) window.clearTimeout(pollId);
+      window.removeEventListener("scroll", handlePositionChange);
+      window.removeEventListener("resize", handlePositionChange);
+    };
   }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMobileMenuOpen]);
 
   const handleNavClick = (id) => {
     onNavigate(id);
@@ -210,53 +248,54 @@ export default function Navbar({ onNavigate }) {
           </button>
         </div>
 
-        <AnimatePresence>
-          {isMobileMenuOpen ? (
-            <motion.div
-              className="fixed inset-0 z-[200] flex flex-col justify-between bg-[rgba(5,5,8,0.97)] px-8 pb-10 pt-28 backdrop-blur-2xl md:hidden"
-              variants={mobileMenuVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              <motion.div className="space-y-6">
-                {navLinks.map((item) => (
-                  <motion.button
-                    key={item.id}
-                    type="button"
-                    onClick={() => handleNavClick(item.id)}
-                    variants={mobileItemVariants}
-                    className="block w-full text-left font-sora text-3xl font-semibold text-text-primary"
-                  >
-                    {item.label}
-                  </motion.button>
-                ))}
-              </motion.div>
-
-              <motion.div variants={mobileItemVariants} className="flex items-center gap-6">
-                <a
-                  href={personalInfo.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-text-muted"
-                >
-                  <Github size={18} />
-                  GitHub
-                </a>
-                <a
-                  href={personalInfo.linkedInUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-text-muted"
-                >
-                  <Linkedin size={18} />
-                  LinkedIn
-                </a>
-              </motion.div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
       </motion.header>
+
+      <AnimatePresence>
+        {isMobileMenuOpen ? (
+          <motion.div
+            className="fixed inset-0 z-[200] flex min-h-dvh flex-col justify-between bg-[rgba(5,5,8,0.985)] px-8 pb-10 pt-28 backdrop-blur-2xl md:hidden"
+            variants={mobileMenuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <motion.div className="space-y-6">
+              {navLinks.map((item) => (
+                <motion.button
+                  key={item.id}
+                  type="button"
+                  onClick={() => handleNavClick(item.id)}
+                  variants={mobileItemVariants}
+                  className="block w-full text-left font-sora text-3xl font-semibold text-text-primary"
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+            </motion.div>
+
+            <motion.div variants={mobileItemVariants} className="flex items-center gap-6">
+              <a
+                href={personalInfo.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-text-muted"
+              >
+                <Github size={18} />
+                GitHub
+              </a>
+              <a
+                href={personalInfo.linkedInUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-text-muted"
+              >
+                <Linkedin size={18} />
+                LinkedIn
+              </a>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
 
       <button
         type="button"

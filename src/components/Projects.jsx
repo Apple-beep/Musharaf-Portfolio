@@ -4,7 +4,7 @@ import { ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     id: "01",
-    title: "HireLens — AI Resume Screener",
+    title: "HireLens - AI Resume Screener",
     category: "AI",
     tech: ["Python", "React", "NLP", "OpenAI API"],
     metric: "Bias detection + fairness audits",
@@ -16,7 +16,7 @@ const projects = [
   },
   {
     id: "02",
-    title: "CheckURL — Phishing Link Scanner",
+    title: "CheckURL - Phishing Link Scanner",
     category: "Security",
     tech: ["JavaScript", "Firefox Extension", "HTML5"],
     metric: "92% accuracy · 84% fewer dangerous clicks",
@@ -28,7 +28,7 @@ const projects = [
   },
   {
     id: "03",
-    title: "VisionVoice — iOS Accessibility App",
+    title: "VisionVoice - iOS Accessibility App",
     category: "iOS",
     tech: ["Swift", "SwiftUI", "AVFoundation", "Vision"],
     metric: "95% OCR accuracy · Apple WWDC",
@@ -40,7 +40,7 @@ const projects = [
   },
   {
     id: "04",
-    title: "Soteria — Smart Emergency Response",
+    title: "Soteria - Smart Emergency Response",
     category: "IoT",
     tech: ["Python", "ESP32", "IoT", "PoE"],
     metric: "Reduced emergency response time ~50%",
@@ -64,7 +64,7 @@ const projects = [
   },
   {
     id: "06",
-    title: "AI Pathfinding — Greedy & A* Search",
+    title: "AI Pathfinding - Greedy & A* Search",
     category: "AI",
     tech: ["Python", "AI", "Algorithms"],
     metric: "~1000× speedup over brute force",
