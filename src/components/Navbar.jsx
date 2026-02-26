@@ -1,0 +1,263 @@
+import { AnimatePresence, motion } from "framer-motion";
+import { Github, Linkedin } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { navLinks, personalInfo } from "../data/portfolioData";
+
+export default function Navbar({ onNavigate }) {
+  const [activeSection, setActiveSection] = useState("about");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const headerStyle = useMemo(
+    () =>
+      isScrolled
+        ? {
+            background: "rgba(10,10,15,0.92)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            borderBottom: "1px solid rgba(255,255,255,0.06)",
+            boxShadow: "0 4px 30px rgba(0,0,0,0.3)",
+          }
+        : {
+            background: "transparent",
+            backdropFilter: "none",
+            WebkitBackdropFilter: "none",
+            borderBottom: "none",
+            boxShadow: "none",
+          },
+    [isScrolled],
+  );
+
+  useEffect(() => {
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 60);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = ["about", "experience", "projects", "skills", "certifications", "contact"];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && sectionIds.includes(entry.target.id)) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const handleNavClick = (id) => {
+    onNavigate(id);
+    setIsMobileMenuOpen(false);
+  };
+
+  const mobileMenuVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.07,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        when: "afterChildren",
+      },
+    },
+  };
+
+  const mobileItemVariants = {
+    hidden: { x: 30, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.3, ease: "easeOut" } },
+    exit: { x: 30, opacity: 0, transition: { duration: 0.2, ease: "easeIn" } },
+  };
+
+  return (
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
+        className="fixed inset-x-0 top-0 z-[100] h-[72px] transition-all duration-300"
+        style={headerStyle}
+      >
+        <div className="mx-auto flex h-full w-full max-w-[1200px] items-center justify-between px-6">
+          <button
+            type="button"
+            onClick={() => onNavigate("top")}
+            data-cursor="interactive"
+            className="group inline-flex items-center font-sora text-[22px] font-extrabold tracking-[0.12em] text-transparent transition duration-200 hover:scale-[1.05] hover:[filter:drop-shadow(0_0_12px_rgba(0,212,255,0.6))]"
+            style={{
+              backgroundImage: "linear-gradient(135deg, #00d4ff, #7b2ff7)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+            }}
+          >
+            MKP
+          </button>
+
+          <nav className="hidden items-center gap-8 md:flex">
+            {navLinks.map((item) => {
+              const active = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  data-cursor="interactive"
+                  onClick={() => handleNavClick(item.id)}
+                  className={`nav-link font-fira text-sm transition-colors duration-300 ${
+                    active ? "" : "hover:text-[#e6edf3]"
+                  }`}
+                  style={{ color: active ? "#00d4ff" : "#7d8590", fontWeight: active ? 600 : 400 }}
+                >
+                  {item.label}
+                  <span
+                    className="absolute left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-[#00D4FF] transition-opacity duration-200"
+                    style={{ bottom: "-6px", opacity: active ? 1 : 0 }}
+                    aria-hidden="true"
+                  />
+                </button>
+              );
+            })}
+          </nav>
+
+          <div className="hidden items-center gap-4 md:flex">
+            <a
+              href={personalInfo.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="interactive"
+              className="text-text-muted hover:scale-110 hover:text-accent-cyan"
+              aria-label="GitHub"
+            >
+              <Github size={18} />
+            </a>
+            <a
+              href={personalInfo.linkedInUrl}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="interactive"
+              className="text-text-muted hover:scale-110 hover:text-accent-cyan"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={18} />
+            </a>
+            <a
+              href="https://drive.google.com/drive/folders/1-musharafkhan"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="interactive"
+              className="group relative overflow-hidden rounded-[999px] border-[1.5px] border-transparent px-5 py-2.5 font-fira text-xs font-semibold transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] [background:linear-gradient(#050508,#050508)_padding-box,linear-gradient(135deg,#00d4ff,#7b2ff7)_border-box] hover:[background:linear-gradient(135deg,#00d4ff,#7b2ff7)]"
+            >
+              Resume
+            </a>
+          </div>
+
+          <button
+            type="button"
+            className="relative z-[210] inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 text-text-primary md:hidden"
+            onClick={() => setIsMobileMenuOpen((previous) => !previous)}
+            data-cursor="interactive"
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`h-[2px] w-6 origin-center rounded-full bg-current transition-all duration-300 ${
+                isMobileMenuOpen ? "translate-y-[8px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-[2px] w-6 rounded-full bg-current transition-all duration-300 ${
+                isMobileMenuOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`h-[2px] w-6 origin-center rounded-full bg-current transition-all duration-300 ${
+                isMobileMenuOpen ? "-translate-y-[8px] -rotate-45" : ""
+              }`}
+            />
+          </button>
+        </div>
+
+        <AnimatePresence>
+          {isMobileMenuOpen ? (
+            <motion.div
+              className="fixed inset-0 z-[200] flex flex-col justify-between bg-[rgba(5,5,8,0.97)] px-8 pb-10 pt-28 backdrop-blur-2xl md:hidden"
+              variants={mobileMenuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <motion.div className="space-y-6">
+                {navLinks.map((item) => (
+                  <motion.button
+                    key={item.id}
+                    type="button"
+                    onClick={() => handleNavClick(item.id)}
+                    variants={mobileItemVariants}
+                    className="block w-full text-left font-sora text-3xl font-semibold text-text-primary"
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </motion.div>
+
+              <motion.div variants={mobileItemVariants} className="flex items-center gap-6">
+                <a
+                  href={personalInfo.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-text-muted"
+                >
+                  <Github size={18} />
+                  GitHub
+                </a>
+                <a
+                  href={personalInfo.linkedInUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-text-muted"
+                >
+                  <Linkedin size={18} />
+                  LinkedIn
+                </a>
+              </motion.div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+      </motion.header>
+
+      <button
+        type="button"
+        onClick={() => onNavigate("contact")}
+        className="fixed right-0 top-1/2 z-50 whitespace-nowrap rounded-t-[6px] px-4 py-1.5 text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#0A0A0F] transition-all duration-300"
+        style={{
+          transform: "translateY(-50%) rotate(-90deg) translateX(calc(50% - 16px))",
+          background: "linear-gradient(135deg, #00D4FF, #7C3AED)",
+        }}
+        onMouseEnter={(event) => {
+          event.currentTarget.style.boxShadow = "0 0 20px rgba(0,212,255,0.5)";
+        }}
+        onMouseLeave={(event) => {
+          event.currentTarget.style.boxShadow = "none";
+        }}
+      >
+        OPEN TO WORK
+      </button>
+
+    </>
+  );
+}
