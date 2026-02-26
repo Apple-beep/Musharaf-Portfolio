@@ -140,7 +140,7 @@ export default function Experience() {
         </motion.div>
 
         <div ref={timelineRef} className="relative mt-16">
-          <div className="absolute bottom-0 left-4 top-0 w-[2px] overflow-hidden md:left-1/2 md:-translate-x-1/2">
+          <div className="absolute bottom-0 left-4 top-0 w-[2px] overflow-hidden lg:left-1/2 lg:-translate-x-1/2">
             <div
               ref={lineRef}
               className="h-full w-full origin-top"
@@ -164,7 +164,7 @@ export default function Experience() {
               return (
                 <div key={`${item.company}-${item.role}`} className="relative flex w-full md:justify-center">
                   <div
-                    className="absolute left-[10px] top-7 z-20 h-3 w-3 rounded-full md:left-1/2 md:-translate-x-1/2"
+                    className="absolute left-[10px] top-7 z-20 h-3 w-3 rounded-full lg:left-1/2 lg:-translate-x-1/2"
                     style={{
                       background: "#00D4FF",
                       boxShadow: "0 0 10px rgba(0,212,255,0.6)",
@@ -180,8 +180,8 @@ export default function Experience() {
                       boxShadow: "0 0 30px rgba(0,212,255,0.05)",
                       y: -4,
                     }}
-                    className={`ml-12 w-[calc(100%-56px)] max-w-[440px] rounded-xl border bg-[#0D0D18] px-8 py-7 transition-all duration-300 md:ml-0 md:w-[45%] ${
-                      right ? "md:translate-x-[54%]" : "md:-translate-x-[54%]"
+                    className={`ml-12 w-[calc(95vw-48px)] max-w-[calc(95vw-48px)] rounded-xl border bg-[#0D0D18] px-5 py-6 transition-all duration-300 md:w-[75vw] md:max-w-[700px] md:px-10 md:py-8 md:min-h-[400px] lg:ml-0 ${
+                      right ? "lg:translate-x-[54%]" : "lg:-translate-x-[54%]"
                     }`}
                     style={{ borderColor: "rgba(255,255,255,0.07)" }}
                   >
@@ -200,10 +200,13 @@ export default function Experience() {
                       {item.location}
                     </div>
 
-                    <ul className="mt-4 space-y-2">
+                    <ul className="mt-4">
                       {item.points.map((point) => (
-                        <li key={point} className="flex gap-2 font-inter text-sm text-[#CBD5E1]">
-                          <span className="text-[#00D4FF]">▹</span>
+                        <li
+                          key={point}
+                          className="mb-3 flex gap-2 font-inter text-[15px] leading-[1.7] text-[#CBD5E1] last:mb-0"
+                        >
+                          <span className="mt-[2px] text-[#00D4FF]">▹</span>
                           <span>{point}</span>
                         </li>
                       ))}
