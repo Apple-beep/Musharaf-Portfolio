@@ -8,17 +8,19 @@ export const personalInfo = {
   linkedIn: "linkedin.com/in/musharaf-khan-pathan",
   linkedInUrl: "https://linkedin.com/in/musharaf-khan-pathan",
   resumeUrl: "/resume.pdf",
-  heroStatus: "Available for SWE / AI / Security Roles — May 2026",
-  heroSummaryLine: "CS @ Illinois Tech · GPA 3.8 · Dean's List 6× · McKinsey Forward",
-  heroDescription: "Building production-grade AI tools, full-stack systems & security software.",
+  heroStatus: "Available for SWE / Data / AI / Cybersecurity Roles — May 2026",
+  heroSummaryLine: "Illinois Tech '26 • GPA 3.8 • Dean's List 6×",
+  heroDescription:
+    "Building AI, security & full-stack solutions with Python, React & AWS. My projects have served 1K+ users and reduced phishing clicks by 84%.",
 };
 
 export const heroTypewriter = [
-  "production-grade AI tools.",
-  "full-stack web applications.",
-  "phishing detection systems.",
-  "iOS accessibility apps.",
-  "cloud-native infrastructure.",
+  "AI resume screeners reducing bias.",
+  "security tools blocking 92% of phishing.",
+  "iOS apps for visually impaired users.",
+  "emergency response systems.",
+  "full-stack React + Flask applications.",
+  "data pipelines processing 50K+ records.",
 ];
 
 export const navLinks = [

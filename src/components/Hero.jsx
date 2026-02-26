@@ -293,8 +293,11 @@ export default function Hero({ reducedMotion = false, onNavigate }) {
             </span>
           </motion.h1>
 
-          <motion.p variants={leftItemVariants} className="font-inter leading-tight text-[#94A3B8]">
-            <span className="text-[clamp(18px,2.5vw,22px)] font-medium">I build </span>
+          <motion.p
+            variants={leftItemVariants}
+            className="flex items-baseline gap-2 font-inter leading-tight text-[#94A3B8]"
+          >
+            <span className="text-[clamp(18px,2.5vw,22px)] font-medium">I build</span>
             <span
               className="font-fira text-[clamp(18px,2.5vw,22px)] text-[#00D4FF]"
               style={{
@@ -312,10 +315,10 @@ export default function Hero({ reducedMotion = false, onNavigate }) {
           </motion.p>
 
           <motion.div variants={leftItemVariants} className="max-w-2xl space-y-1">
-            <p className="font-inter text-[15px] leading-[1.7] text-[#94A3B8]">
+            <p className="font-inter text-[15px] font-medium leading-[1.7] text-[#CBD5E1]">
               {personalInfo.heroSummaryLine}
             </p>
-            <p className="font-inter text-[15px] leading-[1.7] text-[#94A3B8]">
+            <p className="font-inter text-[16px] leading-[1.75] text-[#E2E8F0]">
               {personalInfo.heroDescription}
             </p>
           </motion.div>
@@ -324,7 +327,7 @@ export default function Hero({ reducedMotion = false, onNavigate }) {
             {heroSkillBadges.map((badge) => (
               <span
                 key={badge}
-                className="rounded-[999px] border border-[rgba(0,212,255,0.18)] bg-[rgba(0,212,255,0.07)] px-3 py-1 font-fira text-[12px] text-[#8B95A0] transition duration-200 hover:bg-[rgba(0,212,255,0.15)] hover:text-[#00d4ff]"
+                className="rounded-[999px] border border-[rgba(0,212,255,0.42)] bg-[rgba(0,212,255,0.14)] px-3 py-1 font-fira text-[12px] text-[#D7E8F7] shadow-[0_0_16px_rgba(0,212,255,0.22)] transition duration-200 hover:border-[rgba(0,212,255,0.72)] hover:bg-[rgba(0,212,255,0.24)] hover:text-[#EAF7FF] hover:shadow-[0_0_24px_rgba(0,212,255,0.38)]"
               >
                 {badge}
               </span>

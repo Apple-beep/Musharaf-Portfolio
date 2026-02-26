@@ -125,9 +125,9 @@ export default function About() {
               {INFO_BADGES.map((item) => (
                 <span
                   key={item.label}
-                  className="inline-flex items-center gap-2 rounded-[6px] border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.04)] px-[14px] py-[6px] text-[0.8rem] text-[#94A3B8] transition-all duration-200 hover:border-[rgba(0,212,255,0.3)] hover:text-[#00D4FF]"
+                  className="inline-flex items-center gap-2 rounded-[10px] border border-[rgba(0,212,255,0.28)] bg-[linear-gradient(135deg,rgba(0,212,255,0.12),rgba(124,58,237,0.08))] px-[14px] py-[7px] text-[0.83rem] font-medium text-[#D6E6F8] shadow-[0_0_18px_rgba(0,212,255,0.12)] transition-all duration-200 hover:-translate-y-[1px] hover:border-[rgba(0,212,255,0.55)] hover:bg-[linear-gradient(135deg,rgba(0,212,255,0.18),rgba(124,58,237,0.14))] hover:text-[#F1F7FF] hover:shadow-[0_0_24px_rgba(0,212,255,0.22)]"
                 >
-                  <item.icon size={14} />
+                  <item.icon size={15} className="text-[#8CCFFF]" />
                   {item.label}
                 </span>
               ))}
