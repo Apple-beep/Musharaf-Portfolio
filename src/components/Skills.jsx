@@ -1,33 +1,52 @@
 import { motion } from "framer-motion";
+import {
+  BrainCircuit,
+  Car,
+  Cloud,
+  Code2,
+  Database,
+  Smartphone,
+} from "lucide-react";
 import { useMemo } from "react";
-import { skillCategories, skillsTicker } from "../data/portfolioData";
+import { skillCategories, skillsTicker, softSkills } from "../data/portfolioData";
 import SectionHeader from "../ui/SectionHeader";
 
 const tickerGroups = {
-  languages: ["Python", "JavaScript", "TypeScript", "Java", "C++", "SQL", "HTML/CSS"],
-  aiml: ["TensorFlow", "PyTorch", "Scikit-learn", "NLP", "Computer Vision", "Deep Learning"],
-  data: ["Pandas", "NumPy", "Matplotlib", "MongoDB", "Data Analysis", "Visualization"],
-  cloud: ["AWS", "Azure", "Docker", "Kubernetes", "Linux", "Git", "CI/CD"],
-  web: ["React", "Node.js", "Express", "Firebase", "REST APIs", "GraphQL"],
+  languages: ["Python", "JavaScript", "TypeScript", "Java", "Swift", "C++", "C", "Go", "SQL", "MATLAB", "HTML/CSS", "React", "Flask", "Node.js", "Redux", "Express"],
+  aiml: ["TensorFlow", "PyTorch", "Scikit-learn", "NLP", "Computer Vision", "Deep Learning", "Pandas", "NumPy", "Matplotlib", "Tableau", "Data Analysis"],
+  cloud: ["AWS (EC2, S3, Lambda)", "Azure", "Docker", "Kubernetes", "Linux/Ubuntu", "CI/CD", "Jenkins", "Git/GitHub", "VirtualBox", "Microservices"],
+  dbapi: ["PostgreSQL", "MySQL", "MongoDB", "Firebase", "REST APIs", "GraphQL", "API Design", "Performance Optimization"],
+  mobile: ["SwiftUI", "AVFoundation", "Xcode", "Instruments", "Vision", "C/Assembly", "gdb", "valgrind", "strace", "Embedded Systems"],
+  specialized: ["LiDAR", "Radar", "ROS (Robot Operating System)", "V2X Communication", "Camera Sensor Fusion", "Agile/Scrum", "Test-Driven Development", "Code Review"],
   soft: ["Leadership", "Communication", "Problem Solving", "Team Collaboration", "Mentoring"],
 };
 
 const tickerPalette = {
   languages: { color: "#93C5FD", border: "rgba(59,130,246,0.35)" },
   aiml: { color: "#F9A8D4", border: "rgba(236,72,153,0.35)" },
-  data: { color: "#C4B5FD", border: "rgba(139,92,246,0.35)" },
   cloud: { color: "#FCD34D", border: "rgba(245,158,11,0.35)" },
-  web: { color: "#6EE7B7", border: "rgba(16,185,129,0.35)" },
+  dbapi: { color: "#C4B5FD", border: "rgba(139,92,246,0.35)" },
+  mobile: { color: "#7DD3FC", border: "rgba(14,165,233,0.35)" },
+  specialized: { color: "#FCA5A5", border: "rgba(239,68,68,0.35)" },
   soft: { color: "#94A3B8", border: "rgba(148,163,184,0.25)" },
 };
 
+const categoryIconMap = {
+  Code2,
+  BrainCircuit,
+  Cloud,
+  Database,
+  Smartphone,
+  Car,
+};
+
 const categoryCardMeta = {
-  Languages: { accent: "#3B82F6", icon: "</>" },
-  "AI/ML": { accent: "#EC4899", icon: "AI" },
-  Data: { accent: "#8B5CF6", icon: "DB" },
-  "Cloud & Systems": { accent: "#F59E0B", icon: "☁" },
-  "Web/Tools": { accent: "#10B981", icon: "{ }" },
-  "Soft Skills": { accent: "#06B6D4", icon: "✦" },
+  "Languages & Frameworks": { accent: "#3B82F6" },
+  "AI/ML & Data Science": { accent: "#EC4899" },
+  "Cloud & DevOps": { accent: "#F59E0B" },
+  "Databases & APIs": { accent: "#8B5CF6" },
+  "Mobile & Systems": { accent: "#0EA5E9" },
+  "Specialized & Emerging Tech": { accent: "#EF4444" },
 };
 
 const proficiencyBars = [
@@ -131,9 +150,10 @@ export default function Skills() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {skillCategories.map((category, index) => {
-              const meta = categoryCardMeta[category.name] ?? { accent: "#00D4FF", icon: "•" };
+              const meta = categoryCardMeta[category.name] ?? { accent: "#00D4FF" };
+              const Icon = categoryIconMap[category.icon];
 
               return (
                 <motion.article
@@ -161,13 +181,11 @@ export default function Skills() {
                     style={{
                       width: "36px",
                       height: "36px",
-                      fontSize: "0.85rem",
-                      fontWeight: 700,
                       background: `${meta.accent}26`,
                       color: meta.accent,
                     }}
                   >
-                    {meta.icon}
+                    {Icon ? <Icon size={18} strokeWidth={2.2} /> : "•"}
                   </span>
                   <h3 className="mb-4 flex items-center gap-2.5 font-sora text-[1rem] font-bold text-[#F1F5F9]">
                     {category.name}
@@ -177,10 +195,11 @@ export default function Skills() {
                     {category.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-[5px] border px-[10px] py-1 font-mono text-[0.75rem] text-[#CBD5E1] transition-all duration-200 hover:scale-[1.03] hover:border-[rgba(0,212,255,0.35)] hover:bg-[rgba(0,212,255,0.1)] hover:text-[#00D4FF]"
+                        className="rounded-[8px] border px-2 py-1 font-mono text-[0.82rem] font-semibold text-[#F1F5F9] shadow-[0_0_0_1px_rgba(0,212,255,0.14),0_0_18px_rgba(0,212,255,0.2)] transition-all duration-200 hover:scale-[1.05] hover:brightness-110 hover:border-[rgba(0,212,255,0.62)] hover:bg-[rgba(0,212,255,0.24)] hover:text-white hover:shadow-[0_0_0_1px_rgba(0,212,255,0.26),0_0_26px_rgba(0,212,255,0.32)]"
                         style={{
-                          background: "rgba(255,255,255,0.05)",
-                          borderColor: "rgba(255,255,255,0.1)",
+                          background:
+                            "linear-gradient(135deg, rgba(0,212,255,0.18) 0%, rgba(124,58,237,0.14) 100%)",
+                          borderColor: "rgba(0,212,255,0.38)",
                           fontFamily: "'Courier New', monospace",
                         }}
                       >
@@ -192,6 +211,36 @@ export default function Skills() {
               );
             })}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="rounded-[12px] border px-5 py-4"
+            style={{
+              background: "#0D0D18",
+              borderColor: "rgba(255,255,255,0.07)",
+            }}
+          >
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="font-sora text-[0.95rem] font-semibold text-[#F1F5F9]">Soft Skills:</span>
+              {softSkills.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-[999px] border px-2 py-1 font-mono text-[0.82rem] font-semibold text-[#F1F5F9] shadow-[0_0_0_1px_rgba(0,212,255,0.12),0_0_16px_rgba(0,212,255,0.18)] transition-all duration-200 hover:scale-[1.05] hover:brightness-110 hover:border-[rgba(0,212,255,0.56)] hover:bg-[rgba(0,212,255,0.22)] hover:text-white hover:shadow-[0_0_0_1px_rgba(0,212,255,0.24),0_0_24px_rgba(0,212,255,0.3)]"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(0,212,255,0.16) 0%, rgba(124,58,237,0.12) 100%)",
+                    borderColor: "rgba(0,212,255,0.34)",
+                    fontFamily: "'Courier New', monospace",
+                  }}
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}

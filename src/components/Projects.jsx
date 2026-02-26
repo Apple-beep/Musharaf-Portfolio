@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
-import { personalInfo } from "../data/portfolioData";
 
 const projects = [
   {
@@ -35,8 +34,8 @@ const projects = [
     metric: "95% OCR accuracy · Apple WWDC",
     description:
       "iOS app for visually impaired users with voice-to-text, AI plant care analysis, and on-device ML for offline privacy. WCAG 2.1 AA compliant.",
-    github: "https://github.com/Apple-beep/Projects",
-    live: "https://github.com/Apple-beep/Projects",
+    github: "https://github.com/Apple-beep/VisionVoice/tree/main",
+    live: "https://github.com/Apple-beep/VisionVoice/tree/main",
     featured: false,
   },
   {
@@ -47,8 +46,8 @@ const projects = [
     metric: "Reduced emergency response time ~50%",
     description:
       "IoT prototype with real-time UI, sensor integration, and automated evacuation guidance for smart occupancy monitoring.",
-    github: "https://github.com/Apple-beep/Projects",
-    live: "https://github.com/Apple-beep/Projects",
+    github: "https://github.com/poe-iit2",
+    live: "https://github.com/poe-iit2",
     featured: false,
   },
   {
@@ -119,11 +118,9 @@ const metricBadgeStyle = {
 
 const techTagStyle = {
   fontFamily: "'Courier New', monospace",
-  fontSize: "0.68rem",
-  background: "rgba(255,255,255,0.04)",
-  border: "1px solid rgba(255,255,255,0.09)",
-  color: "#94A3B8",
-  padding: "2px 8px",
+  fontSize: "0.72rem",
+  fontWeight: 600,
+  padding: "4px 8px",
   borderRadius: "3px",
   display: "inline-block",
   marginRight: "6px",
@@ -285,7 +282,11 @@ function FeaturedCard({ project, index }) {
 
         <div>
           {project.tech.map((tech) => (
-            <span key={tech} style={techTagStyle}>
+            <span
+              key={tech}
+              style={techTagStyle}
+              className="inline-block border border-[rgba(0,212,255,0.28)] bg-[rgba(0,212,255,0.11)] text-[#D7E8F8] shadow-[0_0_14px_rgba(0,212,255,0.14)] transition-all duration-200 hover:scale-[1.05] hover:border-[rgba(0,212,255,0.52)] hover:bg-[rgba(0,212,255,0.2)] hover:text-[#EFF8FF] hover:shadow-[0_0_22px_rgba(0,212,255,0.28)]"
+            >
               {tech}
             </span>
           ))}
@@ -342,7 +343,11 @@ function SmallProjectCard({ project, index }) {
 
         <div>
           {project.tech.map((tech) => (
-            <span key={tech} style={techTagStyle}>
+            <span
+              key={tech}
+              style={techTagStyle}
+              className="inline-block border border-[rgba(0,212,255,0.28)] bg-[rgba(0,212,255,0.11)] text-[#D7E8F8] shadow-[0_0_14px_rgba(0,212,255,0.14)] transition-all duration-200 hover:scale-[1.05] hover:border-[rgba(0,212,255,0.52)] hover:bg-[rgba(0,212,255,0.2)] hover:text-[#EFF8FF] hover:shadow-[0_0_22px_rgba(0,212,255,0.28)]"
+            >
               {tech}
             </span>
           ))}
@@ -355,6 +360,7 @@ function SmallProjectCard({ project, index }) {
 export default function Projects() {
   const featuredProjects = projects.slice(0, 2);
   const smallProjects = projects.slice(2);
+  const githubProfileUrl = "https://github.com/Apple-beep";
 
   return (
     <section id="projects" className="px-6 py-[100px]">
@@ -391,10 +397,16 @@ export default function Projects() {
         </div>
 
         <a
-          href={personalInfo.githubUrl}
+          href={githubProfileUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-14 flex w-fit items-center gap-[10px] rounded-[8px] border border-[#00D4FF] px-8 py-3.5 text-[0.9rem] font-medium tracking-[0.02em] text-[#00D4FF] no-underline transition-all duration-300 hover:bg-[#00D4FF] hover:text-[#0A0A0F] hover:shadow-[0_0_30px_rgba(0,212,255,0.4)]"
+          data-cursor="interactive"
+          aria-label="Open Apple-beep GitHub profile in a new tab"
+          onClick={(event) => {
+            event.preventDefault();
+            window.open(githubProfileUrl, "_blank", "noopener,noreferrer");
+          }}
+          className="relative z-10 mt-14 flex w-fit cursor-pointer items-center gap-[10px] rounded-[8px] border border-[#00D4FF] px-8 py-3.5 text-[0.9rem] font-medium tracking-[0.02em] text-[#00D4FF] no-underline transition-all duration-300 hover:bg-[#00D4FF] hover:text-[#0A0A0F] hover:shadow-[0_0_30px_rgba(0,212,255,0.4)]"
           style={{ borderWidth: "1.5px", marginLeft: "auto", marginRight: "auto" }}
         >
           <Github size={18} />

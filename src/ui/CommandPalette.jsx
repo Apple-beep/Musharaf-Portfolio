@@ -189,7 +189,7 @@ export default function CommandPalette({ commands, onExecute }) {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="fixed bottom-7 right-7 z-40 inline-flex items-center gap-2 rounded-[8px] border border-[rgba(255,255,255,0.1)] bg-[rgba(13,13,24,0.9)] px-[14px] py-2 text-[0.75rem] text-[#94A3B8] backdrop-blur-[10px] transition-all duration-200 hover:border-[rgba(0,212,255,0.3)] hover:text-[#00D4FF]"
+          className="fixed bottom-28 right-4 z-40 inline-flex items-center gap-2 rounded-[8px] border border-[rgba(255,255,255,0.1)] bg-[rgba(13,13,24,0.9)] px-[14px] py-2 text-[0.75rem] text-[#94A3B8] backdrop-blur-[10px] transition-all duration-200 hover:border-[rgba(0,212,255,0.3)] hover:text-[#00D4FF] sm:bottom-24 sm:right-5 md:bottom-40 md:right-7"
         >
           <span>Press</span>
           <span

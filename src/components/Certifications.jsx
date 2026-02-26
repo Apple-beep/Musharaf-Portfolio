@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Linkedin } from "lucide-react";
 
 const certifications = [
   { name: "AWS Certified Solutions Architect", issuer: "AWS", featured: true },
@@ -131,6 +132,8 @@ function RegularCertificationCard({ cert, index }) {
 export default function Certifications() {
   const featured = certifications.filter((cert) => cert.featured);
   const regular = certifications.filter((cert) => !cert.featured);
+  const linkedInCertificationsUrl =
+    "https://www.linkedin.com/in/musharaf-khan-pathan/details/certifications/";
 
   return (
     <section id="certifications" className="px-6 py-[120px]">
@@ -164,6 +167,19 @@ export default function Certifications() {
             <RegularCertificationCard key={cert.name} cert={cert} index={index} />
           ))}
         </div>
+
+        <a
+          href={linkedInCertificationsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cursor="interactive"
+          aria-label="View all certifications on LinkedIn in a new tab"
+          className="relative z-20 mt-14 flex w-fit cursor-pointer items-center gap-[10px] rounded-[8px] border border-[#00D4FF] px-8 py-3.5 text-[0.9rem] font-medium tracking-[0.02em] text-[#00D4FF] no-underline transition-all duration-300 hover:bg-[#00D4FF] hover:text-[#0A0A0F] hover:shadow-[0_0_30px_rgba(0,212,255,0.4)]"
+          style={{ borderWidth: "1.5px", marginLeft: "auto", marginRight: "auto", pointerEvents: "auto" }}
+        >
+          <Linkedin size={18} />
+          View All Certifications on LinkedIn →
+        </a>
       </div>
     </section>
   );

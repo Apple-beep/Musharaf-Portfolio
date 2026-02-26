@@ -61,7 +61,7 @@ export default function Contact() {
             margin: "0 auto 12px",
           }}
         >
-          I&apos;m actively looking for full-time Software Engineering, AI, or Security roles starting May 2026 out of Chicago, IL.
+          I&apos;m actively looking for full-time Software Engineering, Data, AI, or Cyber Security roles starting May 2026 out of Chicago, IL.
         </p>
 
         <p

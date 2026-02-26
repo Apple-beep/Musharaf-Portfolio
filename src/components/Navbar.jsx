@@ -261,7 +261,7 @@ export default function Navbar({ onNavigate }) {
       <button
         type="button"
         onClick={() => onNavigate("contact")}
-        className="fixed right-0 top-1/2 z-50 whitespace-nowrap rounded-t-[6px] px-4 py-1.5 text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#0A0A0F] transition-all duration-300"
+        className="fixed right-0 top-1/2 z-50 hidden whitespace-nowrap rounded-t-[6px] px-4 py-1.5 text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#0A0A0F] transition-all duration-300 md:block"
         style={{
           transform: "translateY(-50%) rotate(-90deg) translateX(calc(50% - 16px))",
           background: "linear-gradient(135deg, #00D4FF, #7C3AED)",
