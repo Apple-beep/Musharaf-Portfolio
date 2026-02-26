@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Lenis from "lenis";
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import { quickCommands } from "./data/portfolioData";
+import { personalInfo, quickCommands } from "./data/portfolioData";
 import usePrefersReducedMotion from "./hooks/usePrefersReducedMotion";
 import CommandPalette from "./ui/CommandPalette";
 import CustomCursor from "./ui/CustomCursor";
@@ -119,7 +119,20 @@ export default function App() {
       }
 
       if (command.id === "resume") {
-        window.open("#", "_blank", "noopener,noreferrer");
+        if (personalInfo.resumeUrl && personalInfo.resumeUrl !== "#") {
+          window.open(personalInfo.resumeUrl, "_blank", "noopener,noreferrer");
+        } else {
+          toast("Resume coming soon! Check back shortly.", {
+            icon: "📄",
+            style: {
+              background: "rgba(10,10,15,0.95)",
+              color: "#F1F5F9",
+              border: "1px solid rgba(0,212,255,0.2)",
+              fontFamily: "var(--font-fira, monospace)",
+              fontSize: "13px",
+            },
+          });
+        }
         return;
       }
 
@@ -149,7 +162,7 @@ export default function App() {
       >
         <Navbar onNavigate={navigateToSection} />
 
-        <main>
+        <main id="main-content">
           <Hero onNavigate={navigateToSection} reducedMotion={prefersReducedMotion} />
 
           <Suspense

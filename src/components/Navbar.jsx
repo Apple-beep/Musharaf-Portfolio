@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
+import toast from "react-hot-toast";
 import { useEffect, useMemo, useState } from "react";
 import { navLinks, personalInfo } from "../data/portfolioData";
 
@@ -110,7 +111,7 @@ export default function Navbar({ onNavigate }) {
             MKP
           </button>
 
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav aria-label="Main navigation" className="hidden items-center gap-8 md:flex">
             {navLinks.map((item) => {
               const active = activeSection === item.id;
               return (
@@ -142,7 +143,7 @@ export default function Navbar({ onNavigate }) {
               rel="noreferrer"
               data-cursor="interactive"
               className="text-text-muted hover:scale-110 hover:text-accent-cyan"
-              aria-label="GitHub"
+              aria-label="Visit Musharaf's GitHub profile"
             >
               <Github size={18} />
             </a>
@@ -152,19 +153,36 @@ export default function Navbar({ onNavigate }) {
               rel="noreferrer"
               data-cursor="interactive"
               className="text-text-muted hover:scale-110 hover:text-accent-cyan"
-              aria-label="LinkedIn"
+              aria-label="Connect with Musharaf on LinkedIn"
             >
               <Linkedin size={18} />
             </a>
-            <a
-              href="https://drive.google.com/drive/folders/1-musharafkhan"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => {
+                if (
+                  personalInfo.resumeUrl &&
+                  personalInfo.resumeUrl !== "#"
+                ) {
+                  window.open(personalInfo.resumeUrl, "_blank", "noopener,noreferrer");
+                } else {
+                  toast("Resume coming soon! Check back shortly.", {
+                    icon: "📄",
+                    style: {
+                      background: "rgba(10,10,15,0.95)",
+                      color: "#F1F5F9",
+                      border: "1px solid rgba(0,212,255,0.2)",
+                      fontFamily: "var(--font-fira, monospace)",
+                      fontSize: "13px",
+                    },
+                  });
+                }
+              }}
               data-cursor="interactive"
               className="group relative overflow-hidden rounded-[999px] border-[1.5px] border-transparent px-5 py-2.5 font-fira text-xs font-semibold transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] [background:linear-gradient(#050508,#050508)_padding-box,linear-gradient(135deg,#00d4ff,#7b2ff7)_border-box] hover:[background:linear-gradient(135deg,#00d4ff,#7b2ff7)]"
             >
               Resume
-            </a>
+            </button>
           </div>
 
           <button

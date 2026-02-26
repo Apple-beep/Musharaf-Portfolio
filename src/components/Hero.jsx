@@ -2,18 +2,9 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion";
 import { Download, Github, Linkedin } from "lucide-react";
+import toast from "react-hot-toast";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { personalInfo } from "../data/portfolioData";
-
-const HERO_SKILL_BADGES = ["Python", "React + Flask", "AI/ML", "AWS", "Swift", "Security"];
-
-const TYPEWRITER_PHRASES = [
-  "full-stack web applications.",
-  "production-grade AI tools.",
-  "phishing detection systems.",
-  "iOS accessibility apps.",
-  "cloud-native infrastructure.",
-];
+import { personalInfo, heroSkillBadges, heroTypewriter } from "../data/portfolioData";
 
 function MagneticButton({ children, className, onClick, type = "button" }) {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
@@ -122,7 +113,7 @@ function Hero3DCore({ reducedMotion }) {
   );
 }
 
-export default function Hero({ reducedMotion = false }) {
+export default function Hero({ reducedMotion = false, onNavigate }) {
   const [typedText, setTypedText] = useState("");
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
@@ -130,11 +121,11 @@ export default function Hero({ reducedMotion = false }) {
 
   useEffect(() => {
     if (reducedMotion) {
-      setTypedText(TYPEWRITER_PHRASES[0]);
+      setTypedText(heroTypewriter[0]);
       return;
     }
 
-    const phrase = TYPEWRITER_PHRASES[phraseIndex];
+    const phrase = heroTypewriter[phraseIndex];
     let timeoutId = 0;
 
     if (!deleting && typedText.length < phrase.length) {
@@ -152,7 +143,7 @@ export default function Hero({ reducedMotion = false }) {
     } else if (deleting && typedText.length === 0) {
       timeoutId = window.setTimeout(() => {
         setDeleting(false);
-        setPhraseIndex((current) => (current + 1) % TYPEWRITER_PHRASES.length);
+        setPhraseIndex((current) => (current + 1) % heroTypewriter.length);
       }, 500);
     }
 
@@ -255,13 +246,13 @@ export default function Hero({ reducedMotion = false }) {
           >
             <span className="pulse-green-dot relative z-10 h-2 w-2 rounded-full bg-[#22C55E]" />
             <span className="relative z-10 font-fira text-[13px] text-[#86efac]">
-              Available for SWE / AI / Security Roles — May 2026
+              {personalInfo.heroStatus}
             </span>
           </motion.div>
 
           <motion.p
             variants={leftItemVariants}
-            className="font-inter text-2xl font-medium text-[#94A3B8]"
+            className="mt-1 font-inter text-2xl font-medium text-[#94A3B8]"
           >
             Hi, I&apos;m
           </motion.p>
@@ -307,30 +298,33 @@ export default function Hero({ reducedMotion = false }) {
             <span
               className="font-fira text-[clamp(18px,2.5vw,22px)] text-[#00D4FF]"
               style={{
+                display: "inline-block",
+                minWidth: "4px",
                 minHeight: "1.5em",
                 borderRight: "2px solid #00D4FF",
                 animation: "blink 1s step-end infinite",
                 paddingRight: "6px",
+                verticalAlign: "bottom",
               }}
             >
-              {typedText}
+              {typedText || "\u200B"}
             </span>
           </motion.p>
 
           <motion.div variants={leftItemVariants} className="max-w-2xl space-y-1">
             <p className="font-inter text-[15px] leading-[1.7] text-[#94A3B8]">
-              CS @ Illinois Tech · GPA 3.8 · Dean&apos;s List 6× · McKinsey Forward
+              {personalInfo.heroSummaryLine}
             </p>
             <p className="font-inter text-[15px] leading-[1.7] text-[#94A3B8]">
-              Building production-grade AI tools, full-stack systems &amp; security software.
+              {personalInfo.heroDescription}
             </p>
           </motion.div>
 
           <motion.div variants={leftItemVariants} className="flex flex-wrap gap-2">
-            {HERO_SKILL_BADGES.map((badge) => (
+            {heroSkillBadges.map((badge) => (
               <span
                 key={badge}
-                className="rounded-[999px] border border-[rgba(0,212,255,0.18)] bg-[rgba(0,212,255,0.07)] px-3 py-1 font-fira text-[12px] text-[#7d8590] transition duration-200 hover:bg-[rgba(0,212,255,0.15)] hover:text-[#00d4ff]"
+                className="rounded-[999px] border border-[rgba(0,212,255,0.18)] bg-[rgba(0,212,255,0.07)] px-3 py-1 font-fira text-[12px] text-[#8B95A0] transition duration-200 hover:bg-[rgba(0,212,255,0.15)] hover:text-[#00d4ff]"
               >
                 {badge}
               </span>
@@ -339,25 +333,37 @@ export default function Hero({ reducedMotion = false }) {
 
           <motion.div variants={leftItemVariants} className="flex flex-wrap items-center gap-4">
             <MagneticButton
-              onClick={() =>
-                document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => onNavigate?.("projects")}
               className="relative inline-flex items-center rounded-[10px] bg-gradient-to-r from-[#00D4FF] to-[#7C3AED] px-8 py-3.5 font-sora text-base font-semibold text-white transition-all duration-300 hover:brightness-90 hover:shadow-[0_0_20px_rgba(0,212,255,0.4)]"
             >
               View My Work →
             </MagneticButton>
 
-            <a
-              href="#"
-              target="_blank"
-              rel="noreferrer"
-              title="Resume coming soon — check back!"
-              data-cursor="interactive"
+            <MagneticButton
+              onClick={() => {
+                if (
+                  personalInfo.resumeUrl &&
+                  personalInfo.resumeUrl !== "#"
+                ) {
+                  window.open(personalInfo.resumeUrl, "_blank", "noopener,noreferrer");
+                } else {
+                  toast("Resume coming soon! Check back shortly.", {
+                    icon: "📄",
+                    style: {
+                      background: "rgba(10,10,15,0.95)",
+                      color: "#F1F5F9",
+                      border: "1px solid rgba(0,212,255,0.2)",
+                      fontFamily: "var(--font-fira, monospace)",
+                      fontSize: "13px",
+                    },
+                  });
+                }
+              }}
               className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-white/15 bg-transparent px-8 py-3.5 font-sora text-base text-[#F1F5F9] transition-all duration-300 hover:border-[#00D4FF] hover:text-[#00D4FF]"
             >
               <Download size={16} />
               Download Resume
-            </a>
+            </MagneticButton>
           </motion.div>
 
           <motion.div variants={leftItemVariants} className="flex items-center gap-5">
@@ -366,7 +372,7 @@ export default function Hero({ reducedMotion = false }) {
               target="_blank"
               rel="noreferrer"
               data-cursor="interactive"
-              aria-label="GitHub"
+              aria-label="Visit Musharaf's GitHub profile"
               className="text-[#94A3B8] transition-[transform,color] duration-200 ease-in-out hover:scale-[1.2] hover:text-[#00D4FF]"
             >
               <Github size={22} />
@@ -376,7 +382,7 @@ export default function Hero({ reducedMotion = false }) {
               target="_blank"
               rel="noreferrer"
               data-cursor="interactive"
-              aria-label="LinkedIn"
+              aria-label="Connect with Musharaf on LinkedIn"
               className="text-[#94A3B8] transition-[transform,color] duration-200 ease-in-out hover:scale-[1.2] hover:text-[#00D4FF]"
             >
               <Linkedin size={22} />

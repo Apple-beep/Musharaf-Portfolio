@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { personalInfo } from "../data/portfolioData";
 
 export default function Contact() {
   return (
@@ -77,7 +78,7 @@ export default function Contact() {
 
         <div className="mt-[44px] flex justify-center">
           <a
-            href="mailto:mkpathan@hawk.iit.edu"
+            href={`mailto:${personalInfo.email}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-[10px] rounded-[50px] px-[48px] py-[18px] text-[1.05rem] font-bold no-underline shadow-[0_0_40px_rgba(0,212,255,0.25)] transition-all duration-300 hover:-translate-y-[3px] hover:scale-[1.04] hover:shadow-[0_0_70px_rgba(0,212,255,0.5),0_20px_40px_rgba(0,0,0,0.3)]"
@@ -86,6 +87,7 @@ export default function Contact() {
               color: "#0A0A0F",
               letterSpacing: "0.01em",
             }}
+            aria-label="Send an email to Musharaf Khan Pathan"
           >
             <Mail size={22} color="#0A0A0F" />
             Say Hello →
@@ -94,25 +96,27 @@ export default function Contact() {
 
         <div className="mt-[40px] flex flex-wrap items-center justify-center gap-[36px]">
           <a
-            href="https://github.com/musharafkhan"
+            href={personalInfo.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-[0.88rem] text-[#94A3B8] no-underline transition-all duration-[250ms] hover:-translate-y-[2px] hover:text-[#00D4FF]"
             data-cursor="interactive"
+            aria-label="Visit Musharaf's GitHub profile"
           >
             <Github size={20} />
-            musharafkhan
+            Apple-beep
           </a>
 
           <a
-            href="https://linkedin.com/in/musharafkhan"
+            href={personalInfo.linkedInUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-[0.88rem] text-[#94A3B8] no-underline transition-all duration-[250ms] hover:-translate-y-[2px] hover:text-[#00D4FF]"
             data-cursor="interactive"
+            aria-label="Connect with Musharaf on LinkedIn"
           >
             <Linkedin size={20} />
-            musharafkhan
+            musharaf-khan-pathan
           </a>
         </div>
       </motion.div>

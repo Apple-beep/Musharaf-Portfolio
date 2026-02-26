@@ -7,8 +7,11 @@ export default function LoadingScreen() {
       initial={{ opacity: 1, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, transition: { duration: 0.5, ease: "easeOut" } }}
+      role="status"
+      aria-live="polite"
     >
       <div className="flex w-full max-w-md flex-col items-center justify-center gap-8 px-8">
+        <span className="sr-only">Loading portfolio...</span>
         <svg viewBox="0 0 240 120" className="h-28 w-52" aria-label="MKP Logo">
           <defs>
             <linearGradient id="loadingGradient" x1="0%" y1="0%" x2="100%" y2="100%">

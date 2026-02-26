@@ -13,18 +13,23 @@ const DEFAULT_ITEMS = [
     action: { type: "scroll", target: "certifications" },
   },
   { id: "contact", prefix: "→", label: "Contact", action: { type: "scroll", target: "contact" } },
-  { id: "resume", prefix: "↓", label: "Download Resume", action: { id: "resume", type: "url", target: "#" } },
+  {
+    id: "resume",
+    prefix: "↓",
+    label: "Download Resume",
+    action: { id: "resume", type: "url", target: "/resume.pdf" },
+  },
   {
     id: "github",
     prefix: "⌥",
     label: "GitHub Profile",
-    action: { type: "url", target: "https://github.com/musharafkhan", openInNewTab: true },
+    action: { type: "url", target: "https://github.com/Apple-beep", openInNewTab: true },
   },
   {
     id: "linkedin",
     prefix: "⌥",
     label: "LinkedIn Profile",
-    action: { type: "url", target: "https://linkedin.com/in/musharafkhan", openInNewTab: true },
+    action: { type: "url", target: "https://linkedin.com/in/musharaf-khan-pathan", openInNewTab: true },
   },
 ];
 

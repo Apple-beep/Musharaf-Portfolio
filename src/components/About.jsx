@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Award, BriefcaseBusiness, GraduationCap, MapPin } from "lucide-react";
+import { Award, BriefcaseBusiness, GraduationCap, MapPin, Star } from "lucide-react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import SectionHeader from "../ui/SectionHeader";
@@ -14,6 +14,7 @@ const INFO_BADGES = [
   { icon: MapPin, label: "Chicago, IL" },
   { icon: GraduationCap, label: "May 2026 · GPA 3.8" },
   { icon: BriefcaseBusiness, label: "F-1 OPT Ready" },
+  { icon: Star, label: "McKinsey Forward Scholar" },
   { icon: Award, label: "Apple WWDC Participant" },
 ];
 
@@ -30,7 +31,7 @@ export default function About() {
   return (
     <motion.section
       id="about"
-      className="px-6 py-[120px]"
+      className="px-6 pb-[120px] pt-[80px]"
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
@@ -42,31 +43,46 @@ export default function About() {
         <div className="mt-14 grid gap-14 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
           <motion.div
             className="mx-auto w-full max-w-[320px]"
-            whileHover={{ y: -4, scale: 1.01 }}
+            whileHover={{ y: -6, scale: 1.02 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <div className="relative aspect-square w-full overflow-hidden rounded-[16px]">
+            <div
+              className="relative w-full overflow-hidden rounded-[20px]"
+              style={{
+                boxShadow:
+                  "0 0 0 1px rgba(0,212,255,0.2), 0 0 60px rgba(124,58,237,0.25), 0 20px 60px rgba(0,0,0,0.5)",
+              }}
+            >
+              {/* Animated conic border glow */}
               <div
-                className="pointer-events-none absolute z-0 rounded-full"
+                className="pointer-events-none absolute inset-0 z-10 rounded-[20px]"
                 style={{
                   background:
-                    "conic-gradient(from 0deg, transparent 0deg, #00D4FF 60deg, #7C3AED 120deg, transparent 180deg)",
-                  width: "150%",
-                  height: "150%",
-                  top: "-25%",
-                  left: "-25%",
-                  animation: "spin-border 6s linear infinite",
-                  opacity: 0.15,
+                    "linear-gradient(135deg, rgba(0,212,255,0.15) 0%, transparent 50%, rgba(124,58,237,0.15) 100%)",
                 }}
               />
+
+              {/* Profile Photo */}
+              <img
+                src="/profile.jpg"
+                alt="Musharaf Khan Pathan - Software Engineer at Illinois Institute of Technology"
+                className="relative z-0 h-full w-full object-cover object-top"
+                style={{ aspectRatio: "3 / 4", display: "block" }}
+                onError={(e) => {
+                  // Fallback to MKP card if photo not found
+                  e.currentTarget.style.display = "none";
+                  e.currentTarget.nextElementSibling.style.display = "flex";
+                }}
+              />
+
+              {/* Fallback card (hidden by default, shows if image fails) */}
               <div
-                className="relative z-10 flex h-full w-full flex-col items-center justify-center rounded-[16px] border p-8 text-center"
+                className="relative z-0 hidden h-full w-full flex-col items-center justify-center rounded-[20px] border p-8 text-center"
                 style={{
+                  aspectRatio: "3 / 4",
                   background:
                     "linear-gradient(135deg, #0D0D25 0%, #1A0A3A 50%, #0D1525 100%)",
                   borderColor: "rgba(0,212,255,0.25)",
-                  boxShadow:
-                    "0 0 60px rgba(124,58,237,0.2), 0 0 120px rgba(0,212,255,0.05)",
                 }}
               >
                 <span
@@ -80,7 +96,18 @@ export default function About() {
                   MKP
                 </span>
                 <p className="mt-2 text-[0.75rem] text-[#94A3B8]">Musharaf Khan Pathan</p>
-                <span className="mt-3 inline-flex items-center gap-2 rounded-[999px] border border-[rgba(34,197,94,0.35)] bg-[rgba(34,197,94,0.1)] px-3 py-1 font-fira text-[0.72rem] text-[#86EFAC]">
+              </div>
+
+              {/* Name + badge overlay at bottom of photo */}
+              <div
+                className="absolute bottom-0 left-0 right-0 z-20 flex flex-col items-center gap-2 pb-5 pt-8"
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(5,5,8,0.92) 0%, rgba(5,5,8,0.6) 60%, transparent 100%)",
+                }}
+              >
+                <p className="font-sora text-[0.9rem] font-semibold text-white">Musharaf Khan Pathan</p>
+                <span className="inline-flex items-center gap-2 rounded-[999px] border border-[rgba(34,197,94,0.35)] bg-[rgba(34,197,94,0.12)] px-3 py-1 font-fira text-[0.72rem] text-[#86EFAC]">
                   <span className="pulse-green-dot h-2 w-2 rounded-full bg-[#22C55E]" />
                   Open to Work
                 </span>

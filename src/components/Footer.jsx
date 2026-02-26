@@ -59,7 +59,7 @@ export default function Footer() {
             href={personalInfo.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub"
+            aria-label="Visit Musharaf's GitHub profile"
             className="text-[#94A3B8] transition-all duration-200 hover:scale-[1.15] hover:text-[#00D4FF]"
             data-cursor="interactive"
           >
@@ -69,7 +69,7 @@ export default function Footer() {
             href={personalInfo.linkedInUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn"
+            aria-label="Connect with Musharaf on LinkedIn"
             className="text-[#94A3B8] transition-all duration-200 hover:scale-[1.15] hover:text-[#00D4FF]"
             data-cursor="interactive"
           >

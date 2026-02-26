@@ -3,22 +3,22 @@ export const personalInfo = {
   role: "Software Engineer | CS @ Illinois Tech (graduating 2026)",
   location: "Chicago, IL | F-1 OPT Ready",
   email: "mpathan2work@gmail.com",
-  github: "github.com/musharafkhan",
-  githubUrl: "https://github.com/musharafkhan",
-  linkedIn: "linkedin.com/in/musharafkhan",
-  linkedInUrl: "https://linkedin.com/in/musharafkhan",
+  github: "github.com/Apple-beep",
+  githubUrl: "https://github.com/Apple-beep",
+  linkedIn: "linkedin.com/in/musharaf-khan-pathan",
+  linkedInUrl: "https://linkedin.com/in/musharaf-khan-pathan",
   resumeUrl: "/resume.pdf",
-  heroStatus: "Open to SWE / AI / Data Roles",
-  heroSummaryLine: "CS @ Illinois Tech · GPA 3.9 · Dean's List 6×",
-  heroDescription: "Building human-centered systems at the intersection of AI and software.",
+  heroStatus: "Available for SWE / AI / Security Roles — May 2026",
+  heroSummaryLine: "CS @ Illinois Tech · GPA 3.8 · Dean's List 6× · McKinsey Forward",
+  heroDescription: "Building production-grade AI tools, full-stack systems & security software.",
 };
 
 export const heroTypewriter = [
-  "AI-powered systems.",
-  "full-stack web apps.",
-  "IoT solutions.",
-  "data pipelines.",
-  "cloud infrastructure.",
+  "production-grade AI tools.",
+  "full-stack web applications.",
+  "phishing detection systems.",
+  "iOS accessibility apps.",
+  "cloud-native infrastructure.",
 ];
 
 export const navLinks = [
@@ -42,7 +42,7 @@ export const quickCommands = [
     label: "Download Resume",
     hint: "R",
     type: "url",
-    target: "#",
+    target: "/resume.pdf",
     openInNewTab: true,
   },
   {
@@ -50,7 +50,7 @@ export const quickCommands = [
     label: "GitHub Profile",
     hint: "G",
     type: "url",
-    target: "https://github.com/musharafkhan",
+    target: "https://github.com/Apple-beep",
     openInNewTab: true,
   },
   {
@@ -58,7 +58,7 @@ export const quickCommands = [
     label: "LinkedIn Profile",
     hint: "L",
     type: "url",
-    target: "https://linkedin.com/in/musharafkhan",
+    target: "https://linkedin.com/in/musharaf-khan-pathan",
     openInNewTab: true,
   },
 ];
@@ -136,8 +136,8 @@ export const projectData = [
       "Resume screening workspace with explainable AI — ingests job descriptions, ranks candidates, detects hiring bias with counterfactual insights and audit trails.",
     impact: "⚡ Bias detection + fairness audits",
     tech: ["Python", "React", "NLP", "OpenAI API"],
-    link: "#",
-    github: "https://github.com/musharafkhan",
+    link: "https://github.com/Apple-beep/hirelens",
+    github: "https://github.com/Apple-beep/hirelens",
     featured: true,
   },
   {
@@ -148,8 +148,8 @@ export const projectData = [
       "Firefox extension scanning URLs in real-time with green/yellow/red risk indicators. Tested on URLhaus malicious dataset achieving sub-900ms per scan.",
     impact: "⚡ 92% accuracy · 84% fewer dangerous clicks",
     tech: ["JavaScript", "Firefox Extension", "HTML5"],
-    link: "#",
-    github: "https://github.com/musharafkhan",
+    link: "https://github.com/Apple-beep/CheckUrl-ext",
+    github: "https://github.com/Apple-beep/CheckUrl-ext",
     featured: false,
   },
   {
@@ -160,8 +160,8 @@ export const projectData = [
       "iOS app for visually impaired users with voice-to-text, AI plant care analysis, and on-device ML for offline privacy. WCAG 2.1 AA compliant.",
     impact: "⚡ 95% OCR accuracy · Apple WWDC",
     tech: ["Swift", "SwiftUI", "AVFoundation", "Vision"],
-    link: "#",
-    github: "https://github.com/musharafkhan",
+    link: "https://github.com/Apple-beep/Projects",
+    github: "https://github.com/Apple-beep/Projects",
     featured: false,
   },
   {
@@ -172,8 +172,8 @@ export const projectData = [
       "IoT prototype with real-time UI, sensor integration, and automated evacuation guidance for smart occupancy monitoring.",
     impact: "⚡ Reduced emergency response time ~50%",
     tech: ["Python", "ESP32", "IoT", "PoE"],
-    link: "#",
-    github: "https://github.com/musharafkhan",
+    link: "https://github.com/Apple-beep/Projects",
+    github: "https://github.com/Apple-beep/Projects",
     featured: false,
   },
   {
@@ -184,8 +184,8 @@ export const projectData = [
       "Full CRUD system with OLAP analytics over Formula 1 racing data. Complex JOIN queries and optimized indexing for high-volume data retrieval.",
     impact: "⚡ 10K+ records with OLAP analytics",
     tech: ["Python", "MySQL", "SQL", "OLAP"],
-    link: "#",
-    github: "https://github.com/musharafkhan",
+    link: "https://github.com/Apple-beep/f1-database-management-system",
+    github: "https://github.com/Apple-beep/f1-database-management-system",
     featured: false,
   },
   {
@@ -196,13 +196,13 @@ export const projectData = [
       "Implementation and comparison of Greedy Best-First and A* search algorithms with heuristic optimization for maze and grid traversal.",
     impact: "⚡ ~1000× speedup over brute force",
     tech: ["Python", "AI", "Algorithms"],
-    link: "#",
-    github: "https://github.com/musharafkhan",
+    link: "https://github.com/Apple-beep/AI-Pathfinding-Search-Algorithms",
+    github: "https://github.com/Apple-beep/AI-Pathfinding-Search-Algorithms",
     featured: false,
   },
 ];
 
-export const heroSkillBadges = ["Python", "React", "AI/ML", "AWS", "IoT"];
+export const heroSkillBadges = ["Python", "React + Flask", "AI/ML", "AWS", "Swift", "Security"];
 
 export const aboutInfoChips = [
   "📍 Chicago, IL",
@@ -211,7 +211,7 @@ export const aboutInfoChips = [
 ];
 
 export const statsData = [
-  { label: "GPA", value: 3.9, decimals: 1, suffix: "" },
+  { label: "GPA", value: 3.8, decimals: 1, suffix: "" },
   { label: "Dean's List", value: 6, decimals: 0, suffix: "×" },
   { label: "Students Mentored", value: 100, decimals: 0, suffix: "+" },
   { label: "Professional Roles", value: 5, decimals: 0, suffix: "" },

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
+import { personalInfo } from "../data/portfolioData";
 
 const projects = [
   {
@@ -10,8 +11,8 @@ const projects = [
     metric: "Bias detection + fairness audits",
     description:
       "Resume screening workspace with explainable AI — ingests job descriptions, ranks candidates, detects hiring bias with counterfactual insights and audit trails.",
-    github: "https://github.com/musharafkhan",
-    live: "#",
+    github: "https://github.com/Apple-beep/hirelens",
+    live: "https://github.com/Apple-beep/hirelens",
     featured: true,
   },
   {
@@ -22,8 +23,8 @@ const projects = [
     metric: "92% accuracy · 84% fewer dangerous clicks",
     description:
       "Firefox extension scanning URLs in real-time with green/yellow/red risk indicators. Tested on URLhaus malicious dataset achieving sub-900ms per scan.",
-    github: "https://github.com/musharafkhan",
-    live: "#",
+    github: "https://github.com/Apple-beep/CheckUrl-ext",
+    live: "https://github.com/Apple-beep/CheckUrl-ext",
     featured: true,
   },
   {
@@ -34,8 +35,8 @@ const projects = [
     metric: "95% OCR accuracy · Apple WWDC",
     description:
       "iOS app for visually impaired users with voice-to-text, AI plant care analysis, and on-device ML for offline privacy. WCAG 2.1 AA compliant.",
-    github: "https://github.com/musharafkhan",
-    live: "#",
+    github: "https://github.com/Apple-beep/Projects",
+    live: "https://github.com/Apple-beep/Projects",
     featured: false,
   },
   {
@@ -46,8 +47,8 @@ const projects = [
     metric: "Reduced emergency response time ~50%",
     description:
       "IoT prototype with real-time UI, sensor integration, and automated evacuation guidance for smart occupancy monitoring.",
-    github: "https://github.com/musharafkhan",
-    live: "#",
+    github: "https://github.com/Apple-beep/Projects",
+    live: "https://github.com/Apple-beep/Projects",
     featured: false,
   },
   {
@@ -58,8 +59,8 @@ const projects = [
     metric: "10K+ records with OLAP analytics",
     description:
       "Full CRUD system with OLAP analytics over Formula 1 racing data. Complex JOIN queries and optimized indexing for high-volume data retrieval.",
-    github: "https://github.com/musharafkhan",
-    live: "#",
+    github: "https://github.com/Apple-beep/f1-database-management-system",
+    live: "https://github.com/Apple-beep/f1-database-management-system",
     featured: false,
   },
   {
@@ -70,8 +71,8 @@ const projects = [
     metric: "~1000× speedup over brute force",
     description:
       "Implementation and comparison of Greedy Best-First and A* search algorithms with heuristic optimization for maze and grid traversal.",
-    github: "https://github.com/musharafkhan",
-    live: "#",
+    github: "https://github.com/Apple-beep/AI-Pathfinding-Search-Algorithms",
+    live: "https://github.com/Apple-beep/AI-Pathfinding-Search-Algorithms",
     featured: false,
   },
 ];
@@ -130,6 +131,8 @@ const techTagStyle = {
 };
 
 function ProjectLinks({ project }) {
+  const liveUrl = project.live && project.live !== "#" ? project.live : project.github;
+
   return (
     <div className="flex items-center gap-2">
       <a
@@ -142,7 +145,7 @@ function ProjectLinks({ project }) {
         <Github size={18} />
       </a>
       <a
-        href={project.live}
+        href={liveUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${project.title} external link`}
@@ -388,7 +391,7 @@ export default function Projects() {
         </div>
 
         <a
-          href="https://github.com/musharafkhan"
+          href={personalInfo.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-14 flex w-fit items-center gap-[10px] rounded-[8px] border border-[#00D4FF] px-8 py-3.5 text-[0.9rem] font-medium tracking-[0.02em] text-[#00D4FF] no-underline transition-all duration-300 hover:bg-[#00D4FF] hover:text-[#0A0A0F] hover:shadow-[0_0_30px_rgba(0,212,255,0.4)]"
