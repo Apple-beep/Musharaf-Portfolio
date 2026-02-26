@@ -11,7 +11,7 @@ const projects = [
     description:
       "Resume screening workspace with explainable AI — ingests job descriptions, ranks candidates, detects hiring bias with counterfactual insights and audit trails.",
     github: "https://github.com/Apple-beep/hirelens",
-    live: "https://github.com/Apple-beep/hirelens",
+    live: "/Hirelens.mp4",
     featured: true,
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     description:
       "Firefox extension scanning URLs in real-time with green/yellow/red risk indicators. Tested on URLhaus malicious dataset achieving sub-900ms per scan.",
     github: "https://github.com/Apple-beep/CheckUrl-ext",
-    live: "https://github.com/Apple-beep/CheckUrl-ext",
+    live: "/CheckUrl.pdf",
     featured: true,
   },
   {
@@ -47,7 +47,7 @@ const projects = [
     description:
       "IoT prototype with real-time UI, sensor integration, and automated evacuation guidance for smart occupancy monitoring.",
     github: "https://github.com/poe-iit2",
-    live: "https://github.com/poe-iit2",
+    live: "/soteria1.pdf",
     featured: false,
   },
   {

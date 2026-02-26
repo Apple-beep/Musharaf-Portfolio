@@ -8,7 +8,7 @@ export const personalInfo = {
   linkedIn: "linkedin.com/in/musharaf-khan-pathan",
   linkedInUrl: "https://linkedin.com/in/musharaf-khan-pathan",
   resumeUrl: "/resume.pdf",
-  heroStatus: "Available for SWE / Data / AI / Cybersecurity Roles — May 2026",
+  heroStatus: "Available for SWE / Data / AI / security Roles — May 2026",
   heroSummaryLine: "Illinois Tech '26 • GPA 3.8 • Dean's List 6×",
   heroDescription:
     "Building AI, security & full-stack solutions with Python, React & AWS. My projects have served 1K+ users and reduced phishing clicks by 84%.",
@@ -68,15 +68,28 @@ export const quickCommands = [
 export const experienceData = [
   {
     company: "Colorado Resilience",
-    role: "Software Engineer Intern",
+    role: "Software Engineer (Full Stack)",
     date: "Oct 2025 – Present",
     location: "Remote",
     type: "Engineering",
     points: [
-      "Engineered 10 ReactJS components from Figma specs with Redux, reducing UI bug reports by 30%",
-      "Built Flask/Python REST APIs with JWT auth, PostgreSQL integration across 5 endpoints",
-      "Configured AWS EC2, S3, IAM for distributed team of 8 engineers",
-      "Maintained NIST/CMMC cybersecurity compliance in CI/CD pipeline",
+      "Engineered 10+ ReactJS/JavaScript components from Figma wireframe specs - implementing Redux state management, responsive layouts, and cross-browser compatibility across Chrome, Firefox, Safari, Edge, and Brave, reducing UI bug reports by ~30%.",
+      "Built Flask/Python REST APIs from Swagger specifications - configured Keycloak-backed JWT authentication with role-based access control, integrated PostgreSQL for persistent data, and validated all endpoints via Postman, delivering a stateless, scalable auth layer supporting 500+ concurrent users.",
+      "Implemented and maintained NIST and CMMC cybersecurity compliance standards across the CI/CD pipeline - contributed to audit-trail features, access-control documentation, and compliance reporting for a regulated production environment, directly supporting the platform's enterprise security posture.",
+      "Automated the full CI/CD pipeline using GitHub Actions + AWS (EC2, S3, IAM) and configured VirtualBox/Ubuntu dev environments — cutting manual deployment time from 4 hours to 15 minutes, enabling zero-downtime releases for a distributed team of 8+ engineers.",
+    ],
+  },
+  {
+    company: "Illinois Tech",
+    role: "Undergraduate Teaching Assistant",
+    course: "Systems Programming (C)",
+    date: "Aug 2025 – Dec 2025",
+    location: "Chicago IL",
+    type: "Education",
+    points: [
+      "Guided 100+ students through CS 351's four signature labs - Data, Bomb, Malloc, and Shell Lab - covering bit-level ops, GDB-based reverse engineering, dynamic memory allocation from scratch, and Unix process control (fork/exec/signals), helping students convert theory into working low-level C systems.",
+      "Ran structured debugging clinics for segmentation faults, heap corruption, and buffer overflows - teaching a repeatable triage method (reproduce → isolate → inspect with GDB/objdump/sanitizers) that reduced repeated lab failures and built students' independent debugging confidence.",
+      "Graded 500+ submissions using rubrics centered on memory safety, defensive C practices, and performance - reinforcing the security-aware, correctness-first mindset explicitly targeted in CS 351 outcomes.",
     ],
   },
   {
@@ -94,13 +107,14 @@ export const experienceData = [
   {
     company: "Illinois Tech",
     role: "Undergraduate Teaching Assistant",
-    date: "Jan 2024 – Dec 2025",
+    course: "Object-Oriented Programming (Java)",
+    date: "Jan 2024 – May 2025",
     location: "Chicago IL",
     type: "Education",
     points: [
-      "Mentored 100+ students in Systems Programming (C, Assembly) and Object-Oriented Programming (Java), improving average test scores by 15% through hands-on debugging sessions and weekly algorithm workshops",
-      "Designed and delivered 20 lab sessions covering data structures, OOP principles (inheritance, polymorphism, encapsulation), memory management (malloc/free, stack/heap), process control (fork/exec/signals), and multi-threading concepts",
-      "Graded 500+ assignments with detailed feedback on time complexity (Big O analysis), memory leak detection (Valgrind), defensive programming techniques, and Java best practices, maintaining 92% student satisfaction rating",
+      "Taught core Java OOP principles - encapsulation, inheritance, polymorphism, and interface design - through live code reviews and guided refactors, building students' ability to design clean, extensible systems from scratch.",
+      "Coached students through data structures and algorithm implementations (linked lists, recursion, sorting/searching), helping them reason through design tradeoffs and complexity expected from day-one developers.",
+      "Graded 500+ assignments with rubric-driven feedback on correctness, edge-case handling, and documentation style - reinforcing the professional code quality habits central to the CS 115/116 sequence.",
     ],
   },
   {
@@ -110,19 +124,19 @@ export const experienceData = [
     location: "Remote",
     type: "Data",
     points: [
-      "Analyzed 50,000 records with Python Pandas/NumPy, cutting data processing time by 25%",
-      "Built 5 Tableau dashboards for 20-person global team",
-      "Optimized PostgreSQL queries reducing query time by 20%",
+      "Built data visualizations and Tableau dashboards for Intel's Sustainability team - analyzing real-world datasets to surface actionable insights for a 20-person global stakeholder group, reducing manual reporting effort and improving decision-support clarity.",
+      "Applied Python (Pandas/NumPy) to analyze 50,000+ records from The Recording Academy's content and audience strategy data - identifying engagement trends and presenting findings in Tableau dashboards aligned with Grammy.com's content goals.",
+      "Optimized PostgreSQL queries on production datasets - diagnosed bottlenecks, refactored logic, and cut average query execution time by 20%, improving dashboard load speed and analyst workflow efficiency.",
     ],
   },
   {
     company: "Radical AI",
     role: "AI Engineer",
-    date: "Jun 2024 –Aug 2024",
+    date: "Jun 2024 – Aug 2024",
     location: "Remote NYC",
     type: "AI",
     points: [
-      "Fine-tuned large language models using OpenAI GPT-4 and Google Gemini APIs to deliver personalized career guidance for 2,500+ users, achieving 89% satisfaction rate through iterative user feedback and A/B testing",
+      "Fine-tuned large language models using OpenAI GPT-4 and Google Gemini APIs to deliver personalized career guidance for 2,500+ users, achieving 89% satisfaction rate through iterative user feedback and model optimization",
       "Implemented ethical AI guardrails including bias detection algorithms, fairness audits, and explainability frameworks, reducing discriminatory outputs by 31% and ensuring transparency across 15 diverse user demographics",
       "Collaborated with cross-functional team of 8 data scientists, ML engineers, and product managers to iterate on AI model performance, reducing career recommendation latency by 240ms and improving match accuracy by 27%",
       "Deployed production-ready AI career coaching chatbot serving 1,200+ queries/day with 87% accuracy in skill-to-role mapping and continuous monitoring for bias mitigation",

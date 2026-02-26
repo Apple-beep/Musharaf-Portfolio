@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, X } from "lucide-react";
 import toast from "react-hot-toast";
 import { useEffect, useMemo, useState } from "react";
 import { navLinks, personalInfo } from "../data/portfolioData";
@@ -259,6 +259,16 @@ export default function Navbar({ onNavigate }) {
             animate="visible"
             exit="exit"
           >
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close menu"
+              className="absolute right-6 z-[210] inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-[rgba(10,10,15,0.88)] text-[#E2E8F0] backdrop-blur"
+              style={{ top: "max(16px, env(safe-area-inset-top))" }}
+            >
+              <X size={22} />
+            </button>
+
             <motion.div className="space-y-6">
               {navLinks.map((item) => (
                 <motion.button

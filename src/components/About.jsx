@@ -8,7 +8,7 @@ const BIO_PARAGRAPH_1 =
   "I'm a Software Engineer and CS senior at Illinois Institute of Technology, graduating May 2026. At Colorado Resilience, I engineer React frontends, Flask REST APIs, and AWS infrastructure for production compliance software used in regulated environments.";
 
 const BIO_PARAGRAPH_2 =
-  "I've shipped real tools people use — HireLens, an AI resume screener with bias detection, and CheckURL, a Firefox extension that achieved 92% phishing detection accuracy. I'm also an Apple WWDC Swift Student Challenge participant with VisionVoice, an iOS accessibility app achieving 95% OCR accuracy.";
+  "I've shipped real tools people use - HireLens, an AI resume screener with bias detection, and CheckURL, a Firefox extension that achieved 92% phishing detection accuracy. I'm also an Apple WWDC Swift Student Challenge participant with VisionVoice, an iOS accessibility app achieving 95% OCR accuracy.";
 
 const INFO_BADGES = [
   { icon: MapPin, label: "Chicago, IL" },

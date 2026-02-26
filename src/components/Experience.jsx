@@ -162,7 +162,7 @@ export default function Experience() {
               const right = index % 2 === 1;
 
               return (
-                <div key={`${item.company}-${item.role}`} className="relative flex w-full md:justify-center">
+                <div key={`${item.company}-${item.role}-${item.date}`} className="relative flex w-full md:justify-center">
                   <div
                     className="absolute left-[10px] top-7 z-20 h-3 w-3 rounded-full lg:left-1/2 lg:-translate-x-1/2"
                     style={{
@@ -189,6 +189,9 @@ export default function Experience() {
                       <div>
                         <h3 className="font-sora text-lg font-bold text-[#00D4FF]">{item.company}</h3>
                         <p className="mt-1 font-inter text-base font-semibold text-[#F1F5F9]">{item.role}</p>
+                        {item.course ? (
+                          <p className="mt-1 font-fira text-[0.78rem] text-[#94A3B8]">{item.course}</p>
+                        ) : null}
                       </div>
                       <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1 font-fira text-[0.85rem] text-[#94A3B8]">
                         <DateBadge date={item.date} company={item.company} />
