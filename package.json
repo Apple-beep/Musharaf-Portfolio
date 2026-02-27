@@ -4,9 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "prebuild": "rm -rf dist",
     "dev": "vite",
-    "build": "vite build",
+    "build": "rm -rf dist && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
