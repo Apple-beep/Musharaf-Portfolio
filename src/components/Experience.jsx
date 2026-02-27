@@ -114,7 +114,7 @@ export default function Experience() {
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.05 }}
     >
       <div className="mx-auto w-full max-w-[1200px]">
         <motion.div
