@@ -98,8 +98,17 @@ export default function Navbar({ onNavigate }) {
   }, [isMobileMenuOpen]);
 
   const handleNavClick = (id) => {
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          onNavigate(id);
+        });
+      });
+      return;
+    }
+
     onNavigate(id);
-    setIsMobileMenuOpen(false);
   };
 
   const mobileMenuVariants = {
