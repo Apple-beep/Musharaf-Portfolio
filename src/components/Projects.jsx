@@ -11,7 +11,7 @@ const projects = [
     description:
       "Resume screening workspace with explainable AI — ingests job descriptions, ranks candidates, detects hiring bias with counterfactual insights and audit trails.",
     github: "https://github.com/Apple-beep/hirelens",
-    live: "/Hirelens.mp4",
+    live: "https://github.com/Apple-beep/hirelens",
     featured: true,
   },
   {
