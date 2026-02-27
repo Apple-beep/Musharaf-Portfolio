@@ -140,7 +140,7 @@ export default function Experience() {
         </motion.div>
 
         <div ref={timelineRef} className="relative mt-16">
-          <div className="absolute bottom-0 left-4 top-0 w-[2px] overflow-hidden lg:left-1/2 lg:-translate-x-1/2">
+          <div className="absolute bottom-0 left-4 top-0 w-[2px] overflow-hidden xl:left-1/2 xl:-translate-x-1/2">
             <div
               ref={lineRef}
               className="h-full w-full origin-top"
@@ -164,7 +164,7 @@ export default function Experience() {
               return (
                 <div key={`${item.company}-${item.role}-${item.date}`} className="relative flex w-full md:justify-center">
                   <div
-                    className="absolute left-[10px] top-7 z-20 h-3 w-3 rounded-full lg:left-1/2 lg:-translate-x-1/2"
+                    className="absolute left-[10px] top-7 z-20 h-3 w-3 rounded-full xl:left-1/2 xl:-translate-x-1/2"
                     style={{
                       background: "#00D4FF",
                       boxShadow: "0 0 10px rgba(0,212,255,0.6)",
@@ -180,8 +180,8 @@ export default function Experience() {
                       boxShadow: "0 0 30px rgba(0,212,255,0.05)",
                       y: -4,
                     }}
-                    className={`ml-12 w-[calc(95vw-48px)] max-w-[calc(95vw-48px)] rounded-xl border bg-[#0D0D18] px-5 py-6 transition-all duration-300 md:w-[75vw] md:max-w-[700px] md:px-10 md:py-8 md:min-h-[400px] lg:ml-0 ${
-                      right ? "lg:translate-x-[54%]" : "lg:-translate-x-[54%]"
+                    className={`ml-12 w-[calc(95vw-48px)] max-w-[calc(95vw-48px)] rounded-xl border bg-[#0D0D18] px-5 py-6 transition-all duration-300 md:w-[75vw] md:max-w-[700px] md:px-10 md:py-8 md:min-h-[400px] xl:ml-0 ${
+                      right ? "xl:translate-x-[54%]" : "xl:-translate-x-[54%]"
                     }`}
                     style={{ borderColor: "rgba(255,255,255,0.07)" }}
                   >

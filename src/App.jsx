@@ -98,17 +98,26 @@ export default function App() {
       return;
     }
 
-    const section = document.getElementById(sectionId);
-    if (!section) return;
+    const scrollToResolvedSection = (attempt = 0) => {
+      const section = document.getElementById(sectionId);
+      if (!section) {
+        if (attempt < 20) {
+          window.setTimeout(() => scrollToResolvedSection(attempt + 1), 80);
+        }
+        return;
+      }
 
-    const offset = 84;
-    const targetTop = section.getBoundingClientRect().top + window.scrollY - offset;
+      const offset = 84;
+      const targetTop = section.getBoundingClientRect().top + window.scrollY - offset;
 
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(targetTop);
-    } else {
-      window.scrollTo({ top: targetTop, behavior: "smooth" });
-    }
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(targetTop);
+      } else {
+        window.scrollTo({ top: targetTop, behavior: "smooth" });
+      }
+    };
+
+    scrollToResolvedSection();
   }, []);
 
   const handleCommandExecute = useCallback(
