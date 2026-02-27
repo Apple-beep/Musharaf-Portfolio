@@ -147,7 +147,7 @@ export const experienceData = [
 export const projectData = [
   {
     id: "01",
-    title: "HireLens — AI Resume Screener",
+    title: "HireLens: AI Resume Screener",
     category: "AI",
     description:
       "Resume screening workspace with explainable AI — ingests job descriptions, ranks candidates, detects hiring bias with counterfactual insights and audit trails.",
@@ -159,7 +159,7 @@ export const projectData = [
   },
   {
     id: "02",
-    title: "CheckURL — Phishing Link Scanner",
+    title: "CheckURL: Phishing Link Scanner",
     category: "Security",
     description:
       "Firefox extension scanning URLs in real-time with green/yellow/red risk indicators. Tested on URLhaus malicious dataset achieving sub-900ms per scan.",
@@ -171,7 +171,7 @@ export const projectData = [
   },
   {
     id: "03",
-    title: "VisionVoice — iOS Accessibility App",
+    title: "VisionVoice: iOS Accessibility App",
     category: "iOS",
     description:
       "iOS app for visually impaired users with voice-to-text, AI plant care analysis, and on-device ML for offline privacy. WCAG 2.1 AA compliant.",
@@ -183,7 +183,7 @@ export const projectData = [
   },
   {
     id: "04",
-    title: "Soteria — Smart Emergency Response",
+    title: "Soteria: Smart Emergency Response",
     category: "IoT",
     description:
       "IoT prototype with real-time UI, sensor integration, and automated evacuation guidance for smart occupancy monitoring.",
@@ -207,7 +207,7 @@ export const projectData = [
   },
   {
     id: "06",
-    title: "AI Pathfinding — Greedy & A* Search",
+    title: "AI Pathfinding: Greedy & A* Search",
     category: "AI",
     description:
       "Implementation and comparison of Greedy Best-First and A* search algorithms with heuristic optimization for maze and grid traversal.",

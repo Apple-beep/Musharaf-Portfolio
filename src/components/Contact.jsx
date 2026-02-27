@@ -61,7 +61,7 @@ export default function Contact() {
             margin: "0 auto 12px",
           }}
         >
-          I&apos;m actively looking for full-time Software Engineering, Data, AI, or Cyber Security roles starting May 2026 out of Chicago, IL.
+          I&apos;m actively looking for full-time Software Engineering, Data, AI, or Security roles starting May 2026 out of Chicago, IL.
         </p>
 
         <p
@@ -73,7 +73,7 @@ export default function Contact() {
             margin: "0 auto",
           }}
         >
-          Whether you have a question, a role in mind, or just want to say hi — my inbox is always open.
+          Whether you have a question, a role in mind, or just want to say hi - my inbox is always open.
         </p>
 
         <div className="mt-[44px] flex justify-center">
