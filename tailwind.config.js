@@ -18,8 +18,8 @@ module.exports = {
         "gradient-glow": "radial-gradient(ellipse at center, rgba(0,212,255,0.15), transparent 70%)",
       },
       animation: {
-        "scroll-left": "scroll-left 60s linear infinite",
-        "scroll-right": "scroll-right 70s linear infinite",
+        "scroll-left": "scroll-left 180s linear infinite",
+        "scroll-right": "scroll-right 200s linear infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "float": "float 6s ease-in-out infinite",
       },
