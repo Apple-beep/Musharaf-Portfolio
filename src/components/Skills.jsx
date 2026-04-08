@@ -5,10 +5,17 @@ import {
   Cloud,
   Code2,
   Database,
+  GraduationCap,
+  Handshake,
+  Lightbulb,
+  MessageSquare,
+  RefreshCw,
   Smartphone,
+  Users,
 } from "lucide-react";
 import { useMemo } from "react";
 import { skillCategories, skillsTicker, softSkills } from "../data/portfolioData";
+import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
 import SectionHeader from "../ui/SectionHeader";
 
 const tickerGroups = {
@@ -47,6 +54,15 @@ const categoryCardMeta = {
   "Databases & APIs": { accent: "#8B5CF6" },
   "Mobile & Systems": { accent: "#0EA5E9" },
   "Specialized & Emerging Tech": { accent: "#EF4444" },
+};
+
+const softSkillIconMap = {
+  Users,
+  MessageSquare,
+  Lightbulb,
+  Handshake,
+  GraduationCap,
+  RefreshCw,
 };
 
 const proficiencyBars = [
@@ -90,6 +106,7 @@ function getTickerStyle(skill) {
 
 export default function Skills() {
   const tickerSet = useMemo(() => [...skillsTicker, ...skillsTicker, ...skillsTicker], []);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
     <motion.section
@@ -212,35 +229,77 @@ export default function Skills() {
             })}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="rounded-[12px] border px-5 py-4"
-            style={{
-              background: "#0D0D18",
-              borderColor: "rgba(255,255,255,0.07)",
-            }}
-          >
-            <div className="flex flex-wrap items-center gap-2.5">
-              <span className="font-sora text-[0.95rem] font-semibold text-[#F1F5F9]">Soft Skills:</span>
-              {softSkills.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-[999px] border px-2 py-1 font-mono text-[0.82rem] font-semibold text-[#F1F5F9] shadow-[0_0_0_1px_rgba(0,212,255,0.12),0_0_16px_rgba(0,212,255,0.18)] transition-all duration-200 hover:scale-[1.05] hover:brightness-110 hover:border-[rgba(0,212,255,0.56)] hover:bg-[rgba(0,212,255,0.22)] hover:text-white hover:shadow-[0_0_0_1px_rgba(0,212,255,0.24),0_0_24px_rgba(0,212,255,0.3)]"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(0,212,255,0.16) 0%, rgba(124,58,237,0.12) 100%)",
-                    borderColor: "rgba(0,212,255,0.34)",
-                    fontFamily: "'Courier New', monospace",
-                  }}
-                >
-                  {skill}
-                </span>
-              ))}
+          <div className="space-y-5">
+            <div className="flex items-center gap-3">
+              <span className="font-sora text-[0.95rem] font-semibold text-[#F1F5F9]">
+                Soft Skills:
+              </span>
+              <span
+                className="h-px flex-1"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(0,212,255,0.22) 0%, rgba(124,58,237,0.12) 55%, transparent 100%)",
+                }}
+              />
             </div>
-          </motion.div>
+
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {softSkills.map((skill, index) => {
+                const Icon = softSkillIconMap[skill.icon] ?? Users;
+
+                return (
+                  <motion.article
+                    key={skill.name}
+                    initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+                    whileInView={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{
+                      duration: prefersReducedMotion ? 0 : 0.5,
+                      delay: prefersReducedMotion ? 0 : index * 0.08,
+                      ease: "easeOut",
+                    }}
+                    whileHover={
+                      prefersReducedMotion
+                        ? undefined
+                        : {
+                            y: -4,
+                            borderColor: "rgba(0, 212, 255, 0.45)",
+                            boxShadow: "0 0 30px rgba(0, 212, 255, 0.2)",
+                          }
+                    }
+                    className="glass rounded-[16px] p-6"
+                    style={{
+                      borderColor: "rgba(255,255,255,0.07)",
+                      transition: "all 0.3s ease",
+                    }}
+                  >
+                    <div className="flex items-start gap-4">
+                      <span
+                        className="inline-flex shrink-0 items-center justify-center rounded-[12px]"
+                        style={{
+                          width: "48px",
+                          height: "48px",
+                          background: "rgba(0,212,255,0.1)",
+                          color: "#00D4FF",
+                        }}
+                      >
+                        <Icon size={24} strokeWidth={2} />
+                      </span>
+
+                      <div>
+                        <h3 className="font-sora text-[1rem] font-bold text-[#F1F5F9]">
+                          {skill.name}
+                        </h3>
+                        <p className="mt-2 font-inter text-[0.95rem] leading-[1.75] text-[#94A3B8]">
+                          {skill.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}

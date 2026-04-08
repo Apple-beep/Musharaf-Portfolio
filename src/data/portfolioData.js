@@ -29,6 +29,7 @@ export const navLinks = [
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
   { id: "certifications", label: "Certifications" },
+  { id: "testimonials", label: "Testimonials" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -38,6 +39,7 @@ export const quickCommands = [
   { id: "projects", label: "Projects", hint: "P", type: "scroll", target: "projects" },
   { id: "skills", label: "Skills", hint: "S", type: "scroll", target: "skills" },
   { id: "certifications", label: "Certifications", hint: "F", type: "scroll", target: "certifications" },
+  { id: "testimonials", label: "Testimonials", hint: "T", type: "scroll", target: "testimonials" },
   { id: "contact", label: "Contact", hint: "C", type: "scroll", target: "contact" },
   {
     id: "resume",
@@ -399,11 +401,69 @@ export const skillCategories = [
 ];
 
 export const softSkills = [
+  {
+    name: "Leadership",
+    icon: "Users",
+    description:
+      "Led distributed engineering teams through sprint planning, code reviews, and deployment cycles at Colorado Resilience. Mentored 100+ students as a TA across two semesters.",
+  },
+  {
+    name: "Communication",
+    icon: "MessageSquare",
+    description:
+      "Presented data insights to 20-person stakeholder groups at Intel and The Recording Academy. Ran structured debugging clinics translating complex systems concepts for students.",
+  },
+  {
+    name: "Problem Solving",
+    icon: "Lightbulb",
+    description:
+      "Diagnosed and resolved production bottlenecks cutting query times by 20%. Built phishing detection achieving 92% accuracy through iterative testing on real malicious datasets.",
+  },
+  {
+    name: "Team Collaboration",
+    icon: "Handshake",
+    description:
+      "Collaborated with cross-functional teams of 8+ engineers, data scientists, and product managers. Contributed across the full stack at Colorado Resilience from React frontend to Flask APIs.",
+  },
+  {
+    name: "Mentoring",
+    icon: "GraduationCap",
+    description:
+      "Guided students through Data Lab, Bomb Lab, Malloc Lab, and Shell Lab in Systems Programming. Coached OOP design patterns and data structure implementations across 500+ graded assignments.",
+  },
+  {
+    name: "Adaptability",
+    icon: "RefreshCw",
+    description:
+      "Transitioned across AI, security, iOS, and full-stack roles within two years. Rapidly onboarded to new tech stacks from ROS and LiDAR at EcoCAR to Keycloak and CMMC compliance at Colorado Resilience.",
+  },
+];
+
+export const testimonialHighlightTags = [
   "Leadership",
   "Communication",
-  "Problem Solving",
-  "Team Collaboration",
-  "Mentoring",
+  "Professionalism",
+  "Teamwork",
+  "Time Management",
+];
+
+export const testimonialsData = [
+  {
+    quote:
+      "Musharaf has consistently demonstrated excellent service and professionalism in his role as a Community Desk Assistant. His maturity, teamwork, and time management skills have been a true asset to our department, especially during high-pressure times like finals.",
+    name: "Emily Chelmecki",
+    title: "Assistant Director of Residential Operations",
+    org: "Office of Residence Life, Illinois Tech",
+    tags: ["Leadership", "Teamwork", "Time Management"],
+  },
+  {
+    quote:
+      "Musharaf brought strong ownership and professionalism to his software engineering work. He communicated clearly, contributed effectively across the stack, and approached technical challenges with maturity, collaboration, and a real focus on delivering reliable results.",
+    name: "Jackie Brackett",
+    title: "Supervisor",
+    org: "Colorado Resilience",
+    tags: ["Communication", "Professionalism", "Collaboration"],
+  },
 ];
 
 export const proficiencyData = [
@@ -494,5 +554,6 @@ export const footerLinks = [
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
   { id: "certifications", label: "Certifications" },
+  { id: "testimonials", label: "Testimonials" },
   { id: "contact", label: "Contact" },
 ];

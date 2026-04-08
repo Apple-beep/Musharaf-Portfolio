@@ -17,6 +17,7 @@ const Experience = lazy(() => import("./components/Experience"));
 const Projects = lazy(() => import("./components/Projects"));
 const Skills = lazy(() => import("./components/Skills"));
 const Certifications = lazy(() => import("./components/Certifications"));
+const Testimonials = lazy(() => import("./components/Testimonials"));
 const Contact = lazy(() => import("./components/Contact"));
 const Footer = lazy(() => import("./components/Footer"));
 
@@ -190,6 +191,8 @@ export default function App() {
             <Skills />
             <SectionDivider />
             <Certifications />
+            <SectionDivider />
+            <Testimonials />
             <SectionDivider />
             <Contact />
             <Footer />
