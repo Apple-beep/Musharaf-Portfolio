@@ -10,8 +10,8 @@ const projects = [
     metric: "Bias detection + fairness audits",
     description:
       "Resume screening workspace with explainable AI — ingests job descriptions, ranks candidates, detects hiring bias with counterfactual insights and audit trails.",
-    github: "https://github.com/Apple-beep/hirelens",
-    live: "https://github.com/Apple-beep/hirelens",
+    github: "https://github.com/Musharaf-Khan/hirelens",
+    live: "https://github.com/Musharaf-Khan/hirelens",
     featured: true,
   },
   {
@@ -22,7 +22,7 @@ const projects = [
     metric: "92% accuracy · 84% fewer dangerous clicks",
     description:
       "Firefox extension scanning URLs in real-time with green/yellow/red risk indicators. Tested on URLhaus malicious dataset achieving sub-900ms per scan.",
-    github: "https://github.com/Apple-beep/CheckUrl-ext",
+    github: "https://github.com/Musharaf-Khan/CheckUrl-ext",
     live: "/CheckUrl.pdf",
     featured: true,
   },
@@ -34,8 +34,8 @@ const projects = [
     metric: "95% OCR accuracy · Apple WWDC",
     description:
       "iOS app for visually impaired users with voice-to-text, AI plant care analysis, and on-device ML for offline privacy. WCAG 2.1 AA compliant.",
-    github: "https://github.com/Apple-beep/VisionVoice/tree/main",
-    live: "https://github.com/Apple-beep/VisionVoice/tree/main",
+    github: "https://github.com/Musharaf-Khan/VisionVoice/tree/main",
+    live: "https://github.com/Musharaf-Khan/VisionVoice/tree/main",
     featured: false,
   },
   {
@@ -58,8 +58,8 @@ const projects = [
     metric: "10K+ records with OLAP analytics",
     description:
       "Full CRUD system with OLAP analytics over Formula 1 racing data. Complex JOIN queries and optimized indexing for high-volume data retrieval.",
-    github: "https://github.com/Apple-beep/f1-database-management-system",
-    live: "https://github.com/Apple-beep/f1-database-management-system",
+    github: "https://github.com/Musharaf-Khan/f1-database-management-system",
+    live: "https://github.com/Musharaf-Khan/f1-database-management-system",
     featured: false,
   },
   {
@@ -70,8 +70,8 @@ const projects = [
     metric: "~1000× speedup over brute force",
     description:
       "Implementation and comparison of Greedy Best-First and A* search algorithms with heuristic optimization for maze and grid traversal.",
-    github: "https://github.com/Apple-beep/AI-Pathfinding-Search-Algorithms",
-    live: "https://github.com/Apple-beep/AI-Pathfinding-Search-Algorithms",
+    github: "https://github.com/Musharaf-Khan/AI-Pathfinding-Search-Algorithms",
+    live: "https://github.com/Musharaf-Khan/AI-Pathfinding-Search-Algorithms",
     featured: false,
   },
 ];
@@ -360,7 +360,7 @@ function SmallProjectCard({ project, index }) {
 export default function Projects() {
   const featuredProjects = projects.slice(0, 2);
   const smallProjects = projects.slice(2);
-  const githubProfileUrl = "https://github.com/Apple-beep";
+  const githubProfileUrl = "https://github.com/Musharaf-Khan";
 
   return (
     <section id="projects" className="px-6 py-[100px]">
@@ -401,7 +401,7 @@ export default function Projects() {
           target="_blank"
           rel="noopener noreferrer"
           data-cursor="interactive"
-          aria-label="Open Apple-beep GitHub profile in a new tab"
+          aria-label="Open Musharaf-Khan GitHub profile in a new tab"
           onClick={(event) => {
             event.preventDefault();
             window.open(githubProfileUrl, "_blank", "noopener,noreferrer");

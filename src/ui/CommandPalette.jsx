@@ -23,7 +23,7 @@ const DEFAULT_ITEMS = [
     id: "github",
     prefix: "⌥",
     label: "GitHub Profile",
-    action: { type: "url", target: "https://github.com/Apple-beep", openInNewTab: true },
+    action: { type: "url", target: "https://github.com/Musharaf-Khan", openInNewTab: true },
   },
   {
     id: "linkedin",

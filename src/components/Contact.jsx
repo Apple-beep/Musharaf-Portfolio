@@ -104,7 +104,7 @@ export default function Contact() {
             aria-label="Visit Musharaf's GitHub profile"
           >
             <Github size={20} />
-            Apple-beep
+            Musharaf-Khan
           </a>
 
           <a
